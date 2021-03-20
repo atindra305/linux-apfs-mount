@@ -1,0 +1,68 @@
+OPEN THE TERMINAL AND RUN ALL THE FOLLWOING COMMANDS STEP BY STEP
+
+-----------------------------------------------------------------
+
+sudo apt update
+sudo apt install fuse libfuse-dev libicu-dev bzip2 libz2-dev cmake clang git libattr1-dev
+git clone https://github.com/sgan81/apfs-fuse.git
+cd apfs-fuse
+git submodule init
+git submodule update
+mkdir build
+cd build
+cmake ..
+make
+sudo cp apfs-* /usr/local/bin
+ls /usr/local/bin
+
+-----------------------------------------------------------------
+
+Now to view which drive is apfs:
+sudo fdisk -l
+
+Under the table
+Device 	Start 	End 	Sectors 	Size 	Type
+/dev/sdb2						unknown 
+
+The device with type 'Unknown' is the APFS partition
+
+sudo mkdir -p /media/$USERNAME/macos
+sudo apfs-fuse -o allow_other /dev/sdb2 /media/$USERNAME/macos
+
+
+It has been successfully 
+
+1. Go To File Manager
+2. Other Locations
+3. Computer (root directory of our Linux Operating System)
+4. media
+5. boostupstation (may be your username)
+6. macos
+7. root
+
+In the root directory you will see all of your files.
+
+------------------------------------------------------------------
+
+To unmount the drive:
+
+sudo fusermount -u /media/$USERNAME/macos
+
+Successfully umounted
+
+To check:
+1. Go To File Manager
+2. Other Locations
+3. Computer (root directory of our Linux Operating System)
+4. media
+5. boostupstation (may be your username)
+6. macos
+
+Inside the macos directory you will find nothing, i.e., it is empty.
+
+-----------------------------------------------------------------
+
+Video Link: https://www.youtube.com/watch?v=47puTVS1Scg
+
+-----------------------------------------------------------------
+
