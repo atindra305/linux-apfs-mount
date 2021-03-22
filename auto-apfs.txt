@@ -1,0 +1,24 @@
+Continuing from apfs.txt
+
+---------------------------------------------------
+
+sudo ln -s /usr/local/bin/apfs-fuse /usr/sbin/mount.apfs
+sudo gedit /etc/fstab
+
+A text editer opens:
+at the last line:
+
+paste the command:
+mount.apfs#/dev/sdb2	/media/atindra/macos/	fuse	user,allow_other	0	0
+
+Click Save to save the file
+
+Now Restart your computer
+
+-----------------------------------------------------------------
+
+To Unmount:
+
+sudo fusermount -u /media/$USERNAME/macos
+
+-----------------------------------------------------------------
